@@ -1,18 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { CenterWrapper } from "../commonStyles/commonStyles";
 
 const StHomeWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100dvh;
-`;
-
-const CenterWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 `;
 
 const StBtn = styled.button`

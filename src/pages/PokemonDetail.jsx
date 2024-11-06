@@ -1,6 +1,4 @@
 const PokemonDetail = () => {
-  return (
-    <div>PokemonDetail</div>
-  )
-}
-export default PokemonDetail
+    return <div>PokemonDetail</div>;
+};
+export default PokemonDetail;
