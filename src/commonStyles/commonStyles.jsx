@@ -5,6 +5,7 @@ const CenterWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Pokemon";
 `;
 
 export { CenterWrapper };

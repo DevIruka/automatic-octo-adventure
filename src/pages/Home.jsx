@@ -23,6 +23,7 @@ const StBtn = styled.button`
         background-color: #f5a9a9;
         transition: 0.5s;
     }
+    font-family: "Pokemon";
 `;
 
 const Home = () => {

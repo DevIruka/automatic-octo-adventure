@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Pokemon";
+    src: url("/fonts/DungGeunMo.ttf") format("truetype");
+}
+
 body {
-    background-color: #fdddac;
+    background-color: white;
+    font-family: "Pokemon";
 }
