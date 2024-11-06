@@ -5,6 +5,8 @@ const StDashboardWrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: aqua;
+    width: 95%;
 `;
 
 const StDashboardCard = styled.div`
@@ -12,7 +14,7 @@ const StDashboardCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: green;
     border: solid 3px black;
     margin: 5px;
 `;
