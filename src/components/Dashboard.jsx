@@ -7,6 +7,7 @@ const StDashboardWrapper = styled.div`
     align-items: center;
     background-color: #f8f8f8;
     margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 15px;
 `;
 
@@ -33,12 +34,21 @@ const StDashboardCard = styled.div`
     height: 100px;
 `;
 
+const MyPokemonTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 20px;
+`;
+
 const Dashboard = ({ pokeLists }) => {
     console.log(pokeLists);
     return (
         <>
             <StDashboardWrapper>
-                나만의 포켓몬
+                <MyPokemonTitle>배틀 엔트리</MyPokemonTitle>
                 <StCardWrapper>
                     {pokeLists.map((pokeList) => {
                         return (
