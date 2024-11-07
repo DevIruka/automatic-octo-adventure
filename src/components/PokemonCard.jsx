@@ -32,7 +32,20 @@ const BeepPokeCard = ({ onClick, children }) => {
     );
 };
 
-const PokemonCard = () => {
+const addToEntry = (id, pokeLists, setPokeLists) => {
+    let updated = false;
+
+    const newPokeLists = pokeLists.map((pokeList) => {
+        if (!updated && !pokeList.filled) {
+            updated = true;
+            return { idx: pokeList.idx, pokeid: id, filled: true };
+        }
+        return pokeList;
+    });
+    setPokeLists(newPokeLists);
+};
+
+const PokemonCard = ({ pokeLists, setPokeLists }) => {
     const nav = useNavigate();
     return MOCK_DATA.map((data) => {
         return (
@@ -44,7 +57,13 @@ const PokemonCard = () => {
             >
                 <img src={data.img_url} alt="포켓몬 이미지입니다." />
                 <span>{data.korean_name}</span>
-                <SmallBeepButton>추가</SmallBeepButton>
+                <SmallBeepButton
+                    onClick={() => {
+                        addToEntry(data.id, pokeLists, setPokeLists);
+                    }}
+                >
+                    추가
+                </SmallBeepButton>
             </BeepPokeCard>
         );
     });

@@ -6,7 +6,7 @@ const Dex = ({ pokeLists, setPokeLists }) => {
     return (
         <CenterWrapper>
             <Dashboard pokeLists={pokeLists} setPokeLists={setPokeLists} />
-            <PokemonList />
+            <PokemonList pokeLists={pokeLists} setPokeLists={setPokeLists} />
         </CenterWrapper>
     );
 };
