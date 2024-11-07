@@ -41,12 +41,12 @@ const addToEntry = (id, pokeLists, setPokeLists) => {
         valueofPokeIdArray.push(valueofPokeId);
         valueofFilledArray.push(valueofFilled);
     }
-    if (valueofPokeIdArray.includes(id)) {
-        alert("중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요.");
-        return;
-    }
     if (!valueofFilledArray.includes(false)) {
         alert("배틀 엔트리가 꽉 찼습니다.");
+        return;
+    }
+    if (valueofPokeIdArray.includes(id)) {
+        alert("중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요.");
         return;
     }
     let updated = false;
