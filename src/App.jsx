@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Router from "./shared/Router";
+import PokedexContext from "./context/PokedexContext";
 
 function App() {
     const [pokeLists, setPokeLists] = useState([
@@ -10,7 +11,11 @@ function App() {
         { idx: 4, pokeid: "", filled: false },
         { idx: 5, pokeid: "", filled: false },
     ]);
-    return <Router pokeLists={pokeLists} setPokeLists={setPokeLists} />;
+    return (
+        <PokedexContext.Provider value={{ pokeLists, setPokeLists }}>
+            <Router />
+        </PokedexContext.Provider>
+    );
 }
 
 export default App;

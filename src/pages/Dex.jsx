@@ -2,11 +2,11 @@ import { CenterWrapper } from "../commonStyles/commonStyles";
 import Dashboard from "../components/Dashboard";
 import PokemonList from "../components/PokemonList";
 
-const Dex = ({ pokeLists, setPokeLists }) => {
+const Dex = () => {
     return (
         <CenterWrapper>
-            <Dashboard pokeLists={pokeLists} setPokeLists={setPokeLists} />
-            <PokemonList pokeLists={pokeLists} setPokeLists={setPokeLists} />
+            <Dashboard />
+            <PokemonList />
         </CenterWrapper>
     );
 };

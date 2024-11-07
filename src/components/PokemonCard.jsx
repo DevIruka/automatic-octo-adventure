@@ -4,6 +4,8 @@ import pokebeep from "../assets/pokebeep.mp3";
 import MOCK_DATA from "../assets/PokeData";
 import { useNavigate } from "react-router-dom";
 import { SmallBeepButton } from "../commonStyles/commonStyles";
+import { useContext } from "react";
+import PokedexContext from "../context/PokedexContext";
 
 const PokeCard = styled.div`
     display: flex;
@@ -60,7 +62,9 @@ const addToEntry = (id, pokeLists, setPokeLists) => {
     setPokeLists(newPokeLists);
 };
 
-const PokemonCard = ({ pokeLists, setPokeLists }) => {
+const PokemonCard = () => {
+    const data = useContext(PokedexContext)
+    const {pokeLists, setPokeLists} = data
     const nav = useNavigate();
     return MOCK_DATA.map((data) => {
         return (

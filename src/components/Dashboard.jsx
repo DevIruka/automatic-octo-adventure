@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import MOCK_DATA from "../assets/PokeData";
 import { SmallBeepButton } from "../commonStyles/commonStyles";
+import { useContext } from "react";
+import PokedexContext from "../context/PokedexContext";
 
 const StDashboardWrapper = styled.div`
     display: flex;
@@ -58,7 +60,9 @@ const PokeCard = styled.div`
     margin: 10px;
 `;
 
-const Dashboard = ({ pokeLists, setPokeLists }) => {
+const Dashboard = () => {
+    const data = useContext(PokedexContext)
+    const {pokeLists, setPokeLists} = data
     const deleteFromEntry = (idx) => {
         const newPokeLists = pokeLists.map((pokeList) => {
             if (pokeList.idx === idx) {

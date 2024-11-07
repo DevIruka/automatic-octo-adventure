@@ -24,11 +24,11 @@ const PokeCardWrapper = styled.div`
     width: 95%;
 `;
 
-const PokemonList = ({ pokeLists, setPokeLists }) => {
+const PokemonList = () => {
     return (
         <StListWrapper>
             <PokeCardWrapper>
-                <PokemonCard pokeLists={pokeLists} setPokeLists={setPokeLists} />
+                <PokemonCard />
             </PokeCardWrapper>
         </StListWrapper>
     );
