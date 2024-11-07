@@ -1,15 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CenterWrapper } from "../commonStyles/commonStyles";
+import { CenterWrapper, HeightCenterWrapper } from "../commonStyles/commonStyles";
 import useSound from "use-sound";
 import pokebeep from "../assets/pokebeep.mp3";
-
-const StHomeWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100dvh;
-`;
 
 const StBtn = styled.button`
     width: 170px;
@@ -46,7 +39,7 @@ const BeepButton = ({ onClick, children }) => {
 const Home = () => {
     const nav = useNavigate();
     return (
-        <StHomeWrapper>
+        <HeightCenterWrapper>
             <CenterWrapper>
                 <img
                     src="src\assets\Pokédex_logo.png"
@@ -61,7 +54,7 @@ const Home = () => {
                     포켓 덱스 시작
                 </BeepButton>
             </CenterWrapper>
-        </StHomeWrapper>
+        </HeightCenterWrapper>
     );
 };
 export default Home;

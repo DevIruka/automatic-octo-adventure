@@ -3,6 +3,7 @@ import useSound from "use-sound";
 import pokebeep from "../assets/pokebeep.mp3";
 import MOCK_DATA from "../assets/PokeData";
 import { useNavigate } from "react-router-dom";
+import { SmallBeepButton } from "../commonStyles/commonStyles";
 
 const PokeCard = styled.div`
     display: flex;
@@ -28,38 +29,6 @@ const BeepPokeCard = ({ onClick, children }) => {
         >
             {children}
         </PokeCard>
-    );
-};
-
-const AddBtn = styled.button`
-    width: 50px;
-    height: 35px;
-    margin-top: 10px;
-    background-color: red;
-    color: white;
-    border: solid 1px;
-    border-radius: 8px;
-    font-size: 17px;
-    transition: 0.5s;
-    &:hover {
-        background-color: #f5a9a9;
-        transition: 0.5s;
-        cursor: pointer;
-    }
-    font-family: "Pokemon";
-`;
-const SmallBeepButton = ({ onClick, children }) => {
-    const [play] = useSound(pokebeep);
-    return (
-        <AddBtn
-            onClick={(e) => {
-                e.stopPropagation();
-                play();
-                onClick();
-            }}
-        >
-            {children}
-        </AddBtn>
     );
 };
 
