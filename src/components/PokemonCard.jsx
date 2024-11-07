@@ -33,16 +33,22 @@ const BeepPokeCard = ({ onClick, children }) => {
 };
 
 const addToEntry = (id, pokeLists, setPokeLists) => {
-    console.log(Object.values(pokeLists[0])[1]);
+    const valueofPokeIdArray = [];
+    const valueofFilledArray = [];
     for (const pokeList of pokeLists) {
-        if (Object.values(pokeList)[1] === id) {
-            alert(
-                "중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요."
-            );
-            return;
-        }
+        let valueofPokeId = Object.values(pokeList)[1];
+        let valueofFilled = Object.values(pokeList)[2];
+        valueofPokeIdArray.push(valueofPokeId);
+        valueofFilledArray.push(valueofFilled);
     }
-
+    if (valueofPokeIdArray.includes(id)) {
+        alert("중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요.");
+        return;
+    }
+    if (!valueofFilledArray.includes(false)) {
+        alert("배틀 엔트리가 꽉 찼습니다.");
+        return;
+    }
     let updated = false;
     const newPokeLists = pokeLists.map((pokeList) => {
         if (!updated && !pokeList.filled) {
