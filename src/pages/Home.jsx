@@ -24,6 +24,7 @@ const StBtn = styled.button`
     &:hover {
         background-color: #f5a9a9;
         transition: 0.5s;
+        cursor: pointer;
     }
     font-family: "Pokemon";
 `;

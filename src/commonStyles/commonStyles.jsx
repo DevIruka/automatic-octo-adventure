@@ -10,9 +10,36 @@ const CenterWrapper = styled.div`
     font-family: "Pokemon";
 `;
 
-const BeepButton = () => {
+const StBtn = styled.button`
+    width: 170px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    border: solid 1px;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: 0.5s;
+    &:hover {
+        background-color: #f5a9a9;
+        transition: 0.5s;
+    }
+    font-family: "Pokemon";
+`;
+
+const BigBeepButton = ({ onClick, children }) => {
     const [play] = useSound(pokebeep);
-    return <button onClick={play}></button>;
+    return (
+        <StBtn
+            onClick={() => {
+                play();
+                onClick();
+            }}
+        >
+            {children}
+        </StBtn>
+    );
 };
 
-export { CenterWrapper, BeepButton };
+
+export { CenterWrapper, StBtn, BigBeepButton };
