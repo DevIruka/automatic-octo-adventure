@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CenterWrapper } from "../commonStyles/commonStyles";
+import useSound from "use-sound";
+import pokebeep from "../assets/pokebeep.mp3";
 
 const StHomeWrapper = styled.div`
     display: flex;
@@ -26,6 +28,20 @@ const StBtn = styled.button`
     font-family: "Pokemon";
 `;
 
+const BeepButton = ({ onClick, children }) => {
+    const [play] = useSound(pokebeep);
+    return (
+        <StBtn
+            onClick={() => {
+                play(); 
+                onClick(); 
+            }}
+        >
+            {children}
+        </StBtn>
+    );
+};
+
 const Home = () => {
     const nav = useNavigate();
     return (
@@ -36,13 +52,13 @@ const Home = () => {
                     alt="포켓 덱스 로고"
                     height={"250px"}
                 />
-                <StBtn
+                <BeepButton
                     onClick={() => {
                         nav("/dex");
                     }}
                 >
                     포켓 덱스 시작
-                </StBtn>
+                </BeepButton>
             </CenterWrapper>
         </StHomeWrapper>
     );

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import useSound from "use-sound";
+import pokebeep from "../assets/pokebeep.mp3";
 
 const CenterWrapper = styled.div`
     display: flex;
@@ -8,4 +10,9 @@ const CenterWrapper = styled.div`
     font-family: "Pokemon";
 `;
 
-export { CenterWrapper };
+const BeepButton = () => {
+    const [play] = useSound(pokebeep);
+    return <button onClick={play}></button>;
+};
+
+export { CenterWrapper, BeepButton };
