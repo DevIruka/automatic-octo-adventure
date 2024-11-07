@@ -33,8 +33,17 @@ const BeepPokeCard = ({ onClick, children }) => {
 };
 
 const addToEntry = (id, pokeLists, setPokeLists) => {
-    let updated = false;
+    console.log(Object.values(pokeLists[0])[1]);
+    for (const pokeList of pokeLists) {
+        if (Object.values(pokeList)[1] === id) {
+            alert(
+                "중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요."
+            );
+            return;
+        }
+    }
 
+    let updated = false;
     const newPokeLists = pokeLists.map((pokeList) => {
         if (!updated && !pokeList.filled) {
             updated = true;
