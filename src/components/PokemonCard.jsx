@@ -4,8 +4,8 @@ import pokebeep from "../assets/pokebeep.mp3";
 import MOCK_DATA from "../assets/PokeData";
 import { useNavigate } from "react-router-dom";
 import { SmallBeepButton } from "../commonStyles/commonStyles";
-import { useContext } from "react";
-import PokedexContext from "../context/PokedexContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addPokemon } from "../redux/slices/pokemonSlice";
 
 const PokeCard = styled.div`
     display: flex;
@@ -34,7 +34,7 @@ const BeepPokeCard = ({ onClick, children }) => {
     );
 };
 
-const addToEntry = (id, pokeLists, setPokeLists) => {
+const addToEntry = (id, pokeLists, dispatch) => {
     const valueofPokeIdArray = [];
     const valueofFilledArray = [];
     for (const pokeList of pokeLists) {
@@ -51,20 +51,13 @@ const addToEntry = (id, pokeLists, setPokeLists) => {
         alert("중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요.");
         return;
     }
-    let updated = false;
-    const newPokeLists = pokeLists.map((pokeList) => {
-        if (!updated && !pokeList.filled) {
-            updated = true;
-            return { idx: pokeList.idx, pokeid: id, filled: true };
-        }
-        return pokeList;
-    });
-    setPokeLists(newPokeLists);
+
+    dispatch(addPokemon(id));
 };
 
 const PokemonCard = () => {
-    const data = useContext(PokedexContext)
-    const {pokeLists, setPokeLists} = data
+    const pokeLists = useSelector((state) => state.pokemon.pokeLists);
+    const dispatch = useDispatch();
     const nav = useNavigate();
     return MOCK_DATA.map((data) => {
         return (
@@ -78,7 +71,7 @@ const PokemonCard = () => {
                 <span>{data.korean_name}</span>
                 <SmallBeepButton
                     onClick={() => {
-                        addToEntry(data.id, pokeLists, setPokeLists);
+                        addToEntry(data.id, pokeLists, dispatch);
                     }}
                 >
                     추가
