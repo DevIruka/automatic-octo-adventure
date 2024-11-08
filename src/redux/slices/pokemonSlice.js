@@ -35,9 +35,20 @@ const pokemonSlice = createSlice({
                 }
                 return pokeList;
             });
-            return state
+            return state;
+        },
+
+        removePokemonFromDetail: (state, action) => {
+            state.pokeLists = state.pokeLists.map((pokeList) => {
+                if (pokeList.pokeid === action.payload) {
+                    return { ...pokeList, pokeid: "", filled: false };
+                }
+                return pokeList;
+            });
+            return state;
         },
     },
 });
-export const { addPokemon, removePokemon } = pokemonSlice.actions;
+export const { addPokemon, removePokemon, removePokemonFromDetail } =
+    pokemonSlice.actions;
 export default pokemonSlice.reducer;
