@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import MOCK_DATA from "../assets/PokeData";
 import { SmallBeepButton } from "../commonStyles/commonStyles";
-import { useContext } from "react";
-import PokedexContext from "../context/PokedexContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removePokemon } from "../redux/slices/pokemonSlice";
 
 const StDashboardWrapper = styled.div`
     display: flex;
@@ -62,15 +61,11 @@ const PokeCard = styled.div`
 `;
 
 const Dashboard = () => {
-    const pokeLists = useSelector((state) => state.pokemon.pokeLists)
+    const pokeLists = useSelector((state) => state.pokemon.pokeLists);
+    const dispatch = useDispatch();
+
     const deleteFromEntry = (idx) => {
-        const newPokeLists = pokeLists.map((pokeList) => {
-            if (pokeList.idx === idx) {
-                return { ...pokeList, pokeid: "", filled: false };
-            }
-            return pokeList;
-        });
-        setPokeLists(newPokeLists);
+        dispatch(removePokemon(idx));
     };
 
     return (

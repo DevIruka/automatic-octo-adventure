@@ -14,13 +14,30 @@ const pokemonSlice = createSlice({
     },
     reducers: {
         addPokemon: (state, action) => {
-            return state, action;
+            let updated = false;
+            state.pokeLists = state.pokeLists.map((pokeList) => {
+                if (!updated && !pokeList.filled) {
+                    updated = true;
+                    return {
+                        idx: pokeList.idx,
+                        pokeid: action.payload,
+                        filled: true,
+                    };
+                }
+                return pokeList;
+            });
+            return state;
         },
         removePokemon: (state, action) => {
-            return state, action;
+            state.pokeLists = state.pokeLists.map((pokeList) => {
+                if (pokeList.idx === action.payload) {
+                    return { ...pokeList, pokeid: "", filled: false };
+                }
+                return pokeList;
+            });
+            return state
         },
     },
 });
-
 export const { addPokemon, removePokemon } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
