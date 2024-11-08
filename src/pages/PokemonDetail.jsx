@@ -37,7 +37,7 @@ const PokemonDetail = () => {
     });
 
     const dispatch = useDispatch();
-    const pokeLists = useSelector((state) => state.pokemon.pokeLists)
+    const pokeLists = useSelector((state) => state.pokemon.pokeLists);
 
     const addToEntry = (id, pokeLists) => {
         const valueofPokeIdArray = [];
@@ -76,6 +76,7 @@ const PokemonDetail = () => {
                 />
                 <PokemonName>{selectedData.korean_name}</PokemonName>
                 <PokemonId>No : {selectedData.id}</PokemonId>
+                <PokemonId>타입 : {selectedData.types}</PokemonId>
                 <PokemonDescription>
                     {selectedData.description}
                 </PokemonDescription>
