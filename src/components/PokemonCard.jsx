@@ -63,8 +63,6 @@ const addToEntry = (id, pokeLists, setPokeLists) => {
 };
 
 const PokemonCard = () => {
-    const data = useContext(PokedexContext)
-    const {pokeLists, setPokeLists} = data
     const nav = useNavigate();
     return MOCK_DATA.map((data) => {
         return (

@@ -3,6 +3,7 @@ import MOCK_DATA from "../assets/PokeData";
 import { SmallBeepButton } from "../commonStyles/commonStyles";
 import { useContext } from "react";
 import PokedexContext from "../context/PokedexContext";
+import { useSelector } from "react-redux";
 
 const StDashboardWrapper = styled.div`
     display: flex;
@@ -61,8 +62,7 @@ const PokeCard = styled.div`
 `;
 
 const Dashboard = () => {
-    const data = useContext(PokedexContext)
-    const {pokeLists, setPokeLists} = data
+    const pokeLists = useSelector((state) => state.pokemon.pokeLists)
     const deleteFromEntry = (idx) => {
         const newPokeLists = pokeLists.map((pokeList) => {
             if (pokeList.idx === idx) {
