@@ -4,6 +4,11 @@ import {
     BigBeepButton,
     CenterWrapper,
     HeightCenterWrapper,
+    notifyFullEntry,
+    notifyNoPokemon,
+    notifySamePokemon,
+    notifySuccessRegistration,
+    notifySuccessRemove,
 } from "../commonStyles/commonStyles";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,18 +54,15 @@ const PokemonDetail = () => {
             valueofFilledArray.push(valueofFilled);
         }
         if (!valueofFilledArray.includes(false)) {
-            alert("배틀 엔트리가 꽉 찼습니다.");
+            notifyFullEntry();
             return;
         }
         if (valueofPokeIdArray.includes(id)) {
-            alert(
-                "중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요."
-            );
+            notifySamePokemon();
             return;
         }
-
         dispatch(addPokemon(id));
-        alert("포켓몬이 엔트리에 등록되었습니다.");
+        notifySuccessRegistration();
     };
 
     const deleteFromEntry = (idx) => {
@@ -69,11 +71,11 @@ const PokemonDetail = () => {
             pokeIdArray.push(pokeLists[i].pokeid);
         }
         if (!pokeIdArray.includes(idx)) {
-            alert("엔트리에 해당되는 포켓몬이 없습니다.");
+            notifyNoPokemon();
             return;
         }
         dispatch(removePokemonFromDetail(idx));
-        alert("포켓몬이 엔트리에서 제거되었습니다.");
+        notifySuccessRemove();
     };
 
     return (
