@@ -60,10 +60,20 @@ const PokemonDetail = () => {
         }
 
         dispatch(addPokemon(id));
+        alert("포켓몬이 엔트리에 등록되었습니다.");
     };
 
     const deleteFromEntry = (idx) => {
+        const pokeIdArray = [];
+        for (let i = 0; i < pokeLists.length; i++) {
+            pokeIdArray.push(pokeLists[i].pokeid);
+        }
+        if (!pokeIdArray.includes(idx)) {
+            alert("엔트리에 해당되는 포켓몬이 없습니다.");
+            return;
+        }
         dispatch(removePokemonFromDetail(idx));
+        alert("포켓몬이 엔트리에서 제거되었습니다.");
     };
 
     return (
