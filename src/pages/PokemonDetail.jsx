@@ -4,6 +4,11 @@ import {
     BigBeepButton,
     CenterWrapper,
     HeightCenterWrapper,
+    notifyFullEntry,
+    notifyNoPokemon,
+    notifySamePokemon,
+    notifySuccessRegistration,
+    notifySuccessRemove,
 } from "../commonStyles/commonStyles";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +42,7 @@ const PokemonDetail = () => {
     });
 
     const dispatch = useDispatch();
-    const pokeLists = useSelector((state) => state.pokemon.pokeLists)
+    const pokeLists = useSelector((state) => state.pokemon.pokeLists);
 
     const addToEntry = (id, pokeLists) => {
         const valueofPokeIdArray = [];
@@ -49,21 +54,28 @@ const PokemonDetail = () => {
             valueofFilledArray.push(valueofFilled);
         }
         if (!valueofFilledArray.includes(false)) {
-            alert("배틀 엔트리가 꽉 찼습니다.");
+            notifyFullEntry();
             return;
         }
         if (valueofPokeIdArray.includes(id)) {
-            alert(
-                "중복된 포켓몬을 선택하였습니다. 다른 포켓몬을 선택해주세요."
-            );
+            notifySamePokemon();
             return;
         }
-
         dispatch(addPokemon(id));
+        notifySuccessRegistration();
     };
 
     const deleteFromEntry = (idx) => {
+        const pokeIdArray = [];
+        for (let i = 0; i < pokeLists.length; i++) {
+            pokeIdArray.push(pokeLists[i].pokeid);
+        }
+        if (!pokeIdArray.includes(idx)) {
+            notifyNoPokemon();
+            return;
+        }
         dispatch(removePokemonFromDetail(idx));
+        notifySuccessRemove();
     };
 
     return (
@@ -76,6 +88,7 @@ const PokemonDetail = () => {
                 />
                 <PokemonName>{selectedData.korean_name}</PokemonName>
                 <PokemonId>No : {selectedData.id}</PokemonId>
+                <PokemonId>타입 : {selectedData.types}</PokemonId>
                 <PokemonDescription>
                     {selectedData.description}
                 </PokemonDescription>
