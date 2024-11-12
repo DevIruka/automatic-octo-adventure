@@ -3,6 +3,7 @@ import MOCK_DATA from "../assets/PokeData";
 import { SmallBeepButton } from "../commonStyles/commonStyles";
 import { useDispatch, useSelector } from "react-redux";
 import { removePokemon } from "../redux/slices/pokemonSlice";
+import PokeballImage from "../assets/PokeballImage.png";
 
 const StDashboardWrapper = styled.div`
     display: flex;
@@ -79,7 +80,7 @@ const Dashboard = () => {
                             return (
                                 <StDashboardCard key={pokeList.idx}>
                                     <img
-                                        src="src\assets\Pokebola-pokeball-png-0.png"
+                                        src={PokeballImage}
                                         alt="포켓볼 아이콘입니다."
                                         width={"50px"}
                                     />
