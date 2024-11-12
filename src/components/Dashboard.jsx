@@ -19,6 +19,7 @@ const StDashboardWrapper = styled.div`
 const StCardWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border: solid 1px transparent;
